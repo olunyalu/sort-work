@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../style.css">
+	<title>Sort Bubble</title>
+	<link rel="shortcut icon" type="image/png" href="assets/favicon.ico"/>
+</head>
+<body>
+    <header class="header nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="../templates/bubble.html">Пузырьком</a></li>
+            <li><a href="../templates/select.html">Выбором</a></li>
+            <li><a href="../templates/insert.html">Вставками</a></li>
+            <li><a href="../templates/quick.html">Быстрая</a></li>
+            <li><a href="../templates/merge.html">Слиянием</a></li>
+            <li class="nav_title">Алгоритмы сортировки</li>
+        </ul>
+    </header>
+
+    <div class="wrapper_two">
+        <h1 class ="title">Сортировка пузырьком</h1>
+        <div class="description_top">
+            Сортировку пузырьком (Bubble Sort) также иногда называют сортировкой простыми обменами.
+        </div>
+        <div class ="description_middle">
+            <div class="description_colors">
+                Он берет два первых элемента массива, сравнивает их и расставляет по порядку. Затем происходит смещение на один элемент
+                вправо и сравниваются уже второй и третий элементы. И так далее до конца массива.
+            </div>
+            <br><br>
+            Легко догадаться, что в результате таких манипуляций самое больше число окажется в конце массива. Оно всплывет, как пузырек в воде, отсюда и название сортировки.
+        </div>
+        <div class="gif"><img src="../assets/gifs/bubble.gif" alt=""></div>
+        <br><br>
+
+
+        <div>Пример кода:</div>
+        <pre class="hljs" style="color: rgb(169, 183, 198); background: rgb(40, 43, 46); display: block; overflow-x: auto; padding: 0.5em;">            <span class="hljs-keyword" style="color: rgb(204, 120, 50);">const</span> bubbleSort = arr =&gt; {
+
+            <span class="hljs-keyword" style="color: rgb(204, 120, 50);">for</span> (<span class="hljs-keyword" style="color: rgb(204, 120, 50);">let</span> i = <span class="hljs-number" style="color: rgb(104, 151, 187);">0</span>, endI = arr.length - <span class="hljs-number" style="color: rgb(104, 151, 187);">1</span>; i &lt; endI; i++) {
+                <span class="hljs-keyword" style="color: rgb(204, 120, 50);">let</span> wasSwap = <span class="hljs-literal" style="color: rgb(104, 151, 187);">false</span>;
+
+                <span class="hljs-keyword" style="color: rgb(204, 120, 50);">for</span> (<span class="hljs-keyword" style="color: rgb(204, 120, 50);">let</span> j = <span class="hljs-number" style="color: rgb(104, 151, 187);">0</span>, endJ = endI - i; j &lt; endJ; j++) {
+                    <span class="hljs-keyword" style="color: rgb(204, 120, 50);">if</span> (arr[j] &gt; arr[j + <span class="hljs-number" style="color: rgb(104, 151, 187);">1</span>]) {
+                        [arr[j], arr[j + <span class="hljs-number" style="color: rgb(104, 151, 187);">1</span>]] = [arr[j + <span class="hljs-number" style="color: rgb(104, 151, 187);">1</span>], arr[j]];
+                        wasSwap = <span class="hljs-literal" style="color: rgb(104, 151, 187);">true</span>;
+                    }
+                }
+
+                <span class="hljs-keyword" style="color: rgb(204, 120, 50);">if</span> (!wasSwap) <span class="hljs-keyword" style="color: rgb(204, 120, 50);">break</span>;
+            }
+
+            <span class="hljs-keyword" style="color: rgb(204, 120, 50);">return</span> arr;
+        };</pre>
+        <div class="description_code">
+            <ul>
+                <li>&#8211; Первый цикл отслеживает индекс последнего всплывшего элемента. На каждой итерации он будет уменьшаться.
+                 </li>
+                 <li>&#8211; Второй цикл – это индекс активного элемента на текущей итерации. Он будет начинаться с нуля и продолжаться до элементов, "всплывших" на предыдущих итерациях.
+                    Так как они уже отсортированы, не имеет смысла снова их сравнивать.</li>
+            </ul>
+         </div>
+         <h2 class="subtitle">Сложность</h2>
+         <div class="hard">
+            Пузырьковая сортировка является устойчивой, а ее временная сложность составляет <b>O(N²)</b> в худшем случае. Это означает, что для массива с n
+             элементами нужно совершить n2 операций: для каждого из элементов приходится сделать проход по всем остальным элементам массива. Реальное
+             значение чуть меньше чем n2 , но при расчете сложности алгоритма все коэффициенты отбрасываются. В лучшем случае, если массив уже отсортирован,
+             потребуется всего n операций.
+        </div>
+
+        <div class = "description_video">Если у вас возникли трудности с понимаем работы алгоритма, можно посмотреть его визуализацию на видео:</div>
+        <div class = "video_wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/lyZQPjUT5B4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <footer class="footer">
+        ©
+    </footer>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../style.css">
+	<title>Sort Bubble</title>
+	<link rel="shortcut icon" type="image/png" href="assets/favicon.ico"/>
+</head>
+<body>
+    <header class="header nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="../templates/bubble.html">Пузырьком</a></li>
+            <li><a href="../templates/select.html">Выбором</a></li>
+            <li><a href="../templates/insert.html">Вставками</a></li>
+            <li><a href="../templates/quick.html">Быстрая</a></li>
+            <li><a href="../templates/merge.html">Слиянием</a></li>
+            <li class="nav_title">Алгоритмы сортировки</li>
+        </ul>
+    </header>
+
+    <div class="wrapper_two">
+        <h1 class ="title">Сортировка слиянием</h1>
+        <div class="description_top">
+            Сортировка слиянием – отличный пример применения стратегии "разделяй и властвуй".
+        </div>
+        <br>
+        <div class="description_code">
+            <ul>
+                <li>&#8211; Исходный массив разделяется на две примерно равные части.
+                 </li><br>
+                 <li>&#8211; Каждая часть сортируется отдельно.</li><br>
+                 <li>&#8211; Обе отсортированные части объединяются в один массив.
+                </li>
+            </ul>
+         </div>
+        <div class ="description_middle">
+            <div class="description_colors">
+                Этап 2 выглядит весьма таинственно, ведь он ничего не говорит о том, как именно происходит сортировка частей исходного массива. На самом деле к ним применяется тот же алгоритм (рекурсивное решение задачи). Каждая часть в свою очередь делится на две части, каждая из которых сортируется отдельно, а затем эти части вновь объединяются. Рекурсивное разделение осуществляется до тех пор, пока в каждой части не будет находиться всего один элемент – массив из одного элемента однозначно является отсортированным.
+            </div>
+        </div>
+        <div class="gif"><img src="../assets/gifs/merge.gif" alt=""></div>
+        <br><br>
+
+        <div>Пример кода:</div>
+        <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(51, 51, 51); color: rgb(255, 255, 255);"><span class="hljs-function"><span class="hljs-keyword" style="color: rgb(252, 194, 140);">function</span> <span class="hljs-title" style="color: rgb(255, 255, 170);">mergeSort</span>(<span class="hljs-params">arr</span>) </span>{
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">if</span> (arr.length &lt;= <span class="hljs-number" style="color: rgb(211, 99, 99);">1</span>) <span class="hljs-keyword" style="color: rgb(252, 194, 140);">return</span> arr;
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// середина массива</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> middle = <span class="hljs-built_in" style="color: rgb(255, 255, 170);">Math</span>.floor(arr.length / <span class="hljs-number" style="color: rgb(211, 99, 99);">2</span>);
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// два подмассива, которые будут сортироваться отдельно</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> left = arr.slice(<span class="hljs-number" style="color: rgb(211, 99, 99);">0</span>, middle);
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> right = arr.slice(middle);
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// слияние отсортированных подмассивов</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">return</span> mergeSortedArrays(mergeSort(left), mergeSort(right));
+          }
+
+          <span class="hljs-function"><span class="hljs-keyword" style="color: rgb(252, 194, 140);">function</span> <span class="hljs-title" style="color: rgb(255, 255, 170);">mergeSortedArrays</span>(<span class="hljs-params">arr1, arr2</span>) </span>{
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// Результат слияния</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> newArray = [];
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// текущие индексы сравниваемых элементов</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> index1 = <span class="hljs-number" style="color: rgb(211, 99, 99);">0</span>;
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> index2 = <span class="hljs-number" style="color: rgb(211, 99, 99);">0</span>;
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// сравнение активных элементов</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">while</span>(index1 &lt; arr1.length &amp;&amp; index2 &lt; arr2.length) {
+              <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> min = <span class="hljs-literal" style="color: rgb(252, 194, 140);">null</span>;
+              <span class="hljs-keyword" style="color: rgb(252, 194, 140);">if</span> (comparator(arr1[index1], arr2[index2]) &lt;= <span class="hljs-number" style="color: rgb(211, 99, 99);">0</span>) {
+                min = arr1[index1]; <span class="hljs-comment" style="color: rgb(136, 136, 136);">// добавление минимального элемента в массив</span>
+                index1++; <span class="hljs-comment" style="color: rgb(136, 136, 136);">// сдвиг индекса активного элемента первого массива</span>
+              } <span class="hljs-keyword" style="color: rgb(252, 194, 140);">else</span> {
+                min = arr2[index2];
+                index2++;
+              }
+
+              newArray.push(min);
+
+            }
+
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">return</span> [...newArray, ...arr1.slice(index1), ...arr2.slice(index2) ];
+          }</pre>
+          <br>
+
+         <hr>
+         <div class = "description_bottom">
+            Основная функция сортировки <b>mergeSort</b> делит массив на две части с помощью метода <b>Array.prototype.slice</b> , отправляет каждую часть на рекурсивную сортировку, а затем снова объединяет их с помощью функции <b>mergeSortedArrays</b>.
+            <br><br>
+            Вспомогательная функция <b>mergeSortedArrays</b> начинает с нулевых элементов обоих массивов, сравнивает их и находит минимальный. Для того массива, в котором нашелся минимум, активный индекс сдвигается вправо. Сравнения происходят пока один из массивов не закончится, тогда остаток другого просто присоединяется к результирующему массиву.
+        </div>
+         <h2 class="subtitle">Сложность</h2>
+         <div class="hard">
+            Сортировка слиянием является стабильной. Для нее требуется выполнить <b>n * log(n)</b>  операций.
+        </div>
+
+        <div class = "description_video">Если у вас возникли трудности с понимаем работы алгоритма, можно посмотреть его визуализацию на видео:</div>
+        <div class = "video_wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XaqR3G_NVoo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <footer class="footer">
+        ©
+    </footer>
+</body>
+</html>

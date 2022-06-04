@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>Sort Project</title>
+	<link rel="shortcut icon" type="image/png" href="assets/favicon.ico"/>
+</head>
+<body>
+<header class="header nav">
+
+	<ul>
+		<li><a href="index.html">Главная</a></li>
+		<li><a href="templates/bubble.html">Пузырьком</a></li>
+		<li><a href="templates/select.html">Выбором</a></li>
+		<li><a href="templates/insert.html">Вставками</a></li>
+		<li><a href="templates/quick.html">Быстрая</a></li>
+		<li><a href="templates/merge.html">Слиянием</a></li>
+		<li class="nav_title">Алгоритмы сортировки</li>
+	</ul>
+
+</header>
+<div class="wrapper">
+	<div class="container">
+		<canvas id="myChart" class ='bubbleClass'></canvas>
+		<ul class="description">
+			<li class="title"><a href="templates/bubble.html">Сортировка пузырьком</a></li>
+			<li class="descr__element">Данный алгоритм меняет местами два соседних элемента, если первый элемент массива больше второго. Так происходит до тех пор, пока алгоритм не обменяет местами все неотсортированные элементы.</li>
+			<li class="level">Сложность алгоритма O(n²)</li>
+		</ul>
+	</div>
+	<div class="wrapper_btn">
+		<div class="btn__bubble btn">start</div>
+		<a href="templates/bubble.html"><div class="btn">about</div></a>
+	</div>
+</div>
+<hr>
+
+<div class="wrapper">
+	<div class="container">
+		<canvas id="myChartSelect" class ='selectClass'></canvas>
+		<ul class="description">
+			<li class="title"><a href="templates/select.html">Сортировка выбором</a></li>
+			<li class="descr__element">Cуть алгоритма заключается в проходе по массиву от начала до конца в поиске минимального элемента массива и перемещении его в начало.</li>
+			<li class="level">Сложность алгоритма O(n²)</li>
+		</ul>
+	</div>
+	<div class="wrapper_btn">
+		<div class="btn__select btn">start</div>
+		<a href="templates/select.html"><div class="btn">about</div></a>
+	</div>
+</div>
+<hr>
+
+<div class="wrapper">
+	<div class="container">
+		<canvas id="myChartInsert" class ='selectClass'></canvas>
+		<ul class="description">
+			<li class="title"><a href="templates/insert.html">Сортировка вставками</a></li>
+			<li class="descr__element">Алгоритм сортирует массив по мере прохождения по его элементам. На каждой итерации берется элемент и сравнивается с каждым элементом в уже отсортированной части массива, таким образом находя «свое место», после чего элемент вставляется на свою позицию. Так происходит до тех пор, пока алгоритм не пройдет по всему массиву. На выходе получим отсортированный массив.</li>
+			<li class="level">Сложность алгоритма  O(n²)</li>
+		</ul>
+	</div>
+	<div class="wrapper_btn">
+		<div class="btn__insert btn">start</div>
+		<a href="templates/insert.html"><div class="btn">about</div></a>
+	</div>
+</div>
+
+<footer class="footer">
+	©
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+
+<script src="scripts/lib.js"></script>
+<script src="scripts/data.js"></script>
+<script src="scripts/script.js"></script>
+
+</body>
+</html>

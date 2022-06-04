@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../style.css">
+	<title>Sort Bubble</title>
+	<link rel="shortcut icon" type="image/png" href="assets/favicon.ico"/>
+</head>
+<body>
+    <header class="header nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="../templates/bubble.html">Пузырьком</a></li>
+            <li><a href="../templates/select.html">Выбором</a></li>
+            <li><a href="../templates/insert.html">Вставками</a></li>
+            <li><a href="../templates/quick.html">Быстрая</a></li>
+            <li><a href="../templates/merge.html">Слиянием</a></li>
+            <li class="nav_title">Алгоритмы сортировки</li>
+        </ul>
+    </header>
+
+    <div class="wrapper_two">
+        <h1 class ="title">Быстрая сортировка</h1>
+        <div class="description_top">
+
+        </div>
+        <div class ="description_middle">
+            <div class="description_colors">
+                Алгоритм быстрой сортировки (сортировка Хоара), как ни странно, является одним из самых быстрых алгоритмов сортировки. Он немного похож и на пузырьковую сортировку, и на сортировку слиянием, так как тоже использует стратегию "разделяй и властвуй".
+            </div>
+        </div>
+        <div class="gif"><img src="../assets/gifs/quick.gif" alt=""></div>
+        <br><br>
+
+
+        <div>Пример кода:</div>
+        <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(51, 51, 51); color: rgb(255, 255, 255);"><span class="hljs-function"><span class="hljs-keyword" style="color: rgb(252, 194, 140);">function</span> <span class="hljs-title" style="color: rgb(255, 255, 170);">quickSort</span>(<span class="hljs-params">arr, start, end</span>) </span>{
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">if</span> (start === <span class="hljs-literal" style="color: rgb(252, 194, 140);">undefined</span>) start = <span class="hljs-number" style="color: rgb(211, 99, 99);">0</span>;
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">if</span> (end === <span class="hljs-literal" style="color: rgb(252, 194, 140);">undefined</span>) end = arr.length - <span class="hljs-number" style="color: rgb(211, 99, 99);">1</span>;
+
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">if</span> (start &gt;= end) <span class="hljs-keyword" style="color: rgb(252, 194, 140);">return</span>;
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// индекс опорного элемента</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> pivot = partition(arr, start, end);
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// рекурсивная сортировка подмассивов</span>
+            quickSort(arr, start, pivot - <span class="hljs-number" style="color: rgb(211, 99, 99);">1</span>);
+            quickSort(arr, pivot + <span class="hljs-number" style="color: rgb(211, 99, 99);">1</span>, end);
+          }
+
+          <span class="hljs-function"><span class="hljs-keyword" style="color: rgb(252, 194, 140);">function</span> <span class="hljs-title" style="color: rgb(255, 255, 170);">partition</span>(<span class="hljs-params">arr, start, end</span>) </span>{
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// Берем в качестве опорного последний элемент подмассива</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> pivotValue = arr[end];
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// изначально считаем, что pivotValue минимальное значение</span>
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// и должно находиться в начале массива</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> pivotIndex = start;
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// перебираем все элементы</span>
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">for</span> (<span class="hljs-keyword" style="color: rgb(252, 194, 140);">let</span> i = start; i &lt; end; i++) {
+              <span class="hljs-comment" style="color: rgb(136, 136, 136);">// значения меньше опорного перемещаем перед ним</span>
+              <span class="hljs-keyword" style="color: rgb(252, 194, 140);">if</span> (comparator(arr[i], pivotValue) &lt; <span class="hljs-number" style="color: rgb(211, 99, 99);">0</span>) {
+                swap(arr, i, pivotIndex);
+                pivotIndex++;
+              }
+            }
+
+            <span class="hljs-comment" style="color: rgb(136, 136, 136);">// ставим опорный элемент в нужное место</span>
+            swap(arr, pivotIndex, end);
+
+            <span class="hljs-keyword" style="color: rgb(252, 194, 140);">return</span> pivotIndex;
+          }</pre>
+        <div class="description_code">
+            <ul>
+                <li>&#8211; Сначала в массиве выбирается опорный элемент (пивот). Выбрать его можно любым способом: например, взять первый, средний или случайный элемент. От способа выбора во многом зависит эффективность алгоритма.
+                 </li><br>
+                 <li>&#8211; Затем все остальные элементы сравниваются с опорным и переставляются так, чтобы все элементы, которые меньше опорного оказались до него, а все, которые больше – после. Под больше и меньше здесь имеется в виду результат сортировки. На этом этапе в массиве сначала идут все элементы меньше опорного (для которых компаратор вернул отрицательное число), затем опорный, а затем все элементы больше опорного (компаратор вернул положительное число).</li><br>
+                 <li>&#8211; И наконец для групп "меньше" и "больше" рекурсивно выполняется тот же самый алгоритм. Сам опорный элемент может быть включен в одну из групп.</li>
+            </ul>
+         </div>
+         <hr>
+         <div class = "description_bottom">
+            Функция <b>quickSort</b> принимает в качестве аргументов сам массив, а также начальную и конечную позиции, между которыми нужно произвести перестановки (границы подмассива). При первом вызове <b>start</b> и <b>end</b> не указываются, поэтому сортировка происходит для всего массива. При каждом рекурсивном вызове <b>start</b> и <b>end</b>  приближаются друг к другу, так как подмассивы уменьшаются.
+            <br><br>
+            Вспомогательная функция <b>partition</b>  также принимает исходный массив и границы подмассива для сортировки. Она находит опорный элемент для этого подмассива и перемещает остальные элементы согласно алгоритму, а затем возвращает индекс опорного элемента для дальнейшей рекурсивной сортировки.
+            <br><br>
+            Помимо рекурсии быструю сортировку можно реализовать итеративно (с помощью циклов). Также существует огромное количество модификаций алгоритма быстрой сортировки, направленных на улучшение ее эффективности, например, различные вариации выбора опорного элемента.
+        </div>
+         <h2 class="subtitle">Сложность</h2>
+         <div class="hard">
+            В худшем случае при неудачном выборе пивота быстрая сортировка массива имеет сложность <b>O(n2)</b> , однако в среднем она равна <b>n * log(n)</b> и является одной из самых эффективных.
+        </div>
+
+        <div class = "description_video">Если у вас возникли трудности с понимаем работы алгоритма, можно посмотреть его визуализацию на видео:</div>
+        <div class = "video_wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ywWBy6J5gz8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <footer class="footer">
+        ©
+    </footer>
+</body>
+</html>

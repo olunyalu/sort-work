@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../style.css">
+	<title>Sort Select</title>
+	<link rel="shortcut icon" type="image/png" href="assets/favicon.ico"/>
+</head>
+<body>
+    <header class="header nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="../templates/bubble.html">Пузырьком</a></li>
+            <li><a href="../templates/select.html">Выбором</a></li>
+            <li><a href="../templates/insert.html">Вставками</a></li>
+            <li><a href="../templates/quick.html">Быстрая</a></li>
+            <li><a href="../templates/merge.html">Слиянием</a></li>
+            <li class="nav_title">Алгоритмы сортировки</li>
+        </ul>
+    </header>
+
+    <div class="wrapper_two">
+        <h1 class ="title">Сортировка выбором</h1>
+        <div class="description_top">
+            Этот алгоритм похож на сортировку пузырьком: он на каждой итерации отсортировывает один элемент, только собираются они не в конце массива, а в начале.
+        </div>
+        <div class ="description_middle">
+            <br>
+            Его суть — за каждый проход по массиву выбрать минимальный элемент (для сортировки по возрастанию) и поменять его местами с первым элементом в еще не отсортированном участке массива, тем самым уменьшив длину этого участка на один, и так до тех пор пока не будут отсортированы все элементы.
+                <div class="description_colors">
+                    Алгоритм также начинает с первого элемента массива и движется направо. Он сравнивает элементы попарно и отбирает минимальный из них. Найденный минимум меняется
+                    местами с первым не отсортированным элементом в начале массива.
+                </div>
+                <br><br>
+            Этот подход хорошо виден на иллюстрации:
+    </div>
+    <div class="gif"><img src="../assets/gifs/select.gif" alt=""></div>
+
+
+        <div>Пример кода:</div>
+        <pre class="hljs" style="color: rgb(169, 183, 198); background: rgb(40, 43, 46); display: block; overflow-x: auto; padding: 0.5em;"><span class="hljs-keyword" style="color: rgb(204, 120, 50);">const</span> selectionSort = arr =&gt; {
+            <span class="hljs-keyword" style="color: rgb(204, 120, 50);">for</span> (<span class="hljs-keyword" style="color: rgb(204, 120, 50);">let</span> i = <span class="hljs-number" style="color: rgb(104, 151, 187);">0</span>, l = arr.length, k = l - <span class="hljs-number" style="color: rgb(104, 151, 187);">1</span>; i &lt; k; i++) {
+            <span class="hljs-keyword" style="color: rgb(204, 120, 50);">let</span> indexMin = i;
+            <span class="hljs-keyword" style="color: rgb(204, 120, 50);">for</span> (<span class="hljs-keyword" style="color: rgb(204, 120, 50);">let</span> j = i + <span class="hljs-number" style="color: rgb(104, 151, 187);">1</span>; j &lt; l; j++) {
+                <span class="hljs-keyword" style="color: rgb(204, 120, 50);">if</span> (arr[indexMin] &gt; arr[j]) {
+                    indexMin = j;
+                }
+            }
+            <span class="hljs-keyword" style="color: rgb(204, 120, 50);">if</span> (indexMin !== i) {
+                [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]];
+            }
+        }
+        <span class="hljs-keyword" style="color: rgb(204, 120, 50);">return</span> arr;
+    };</pre>
+        <div class = "description_bottom">
+            При переборке массива мы находим наименьшее число в несортированном списке. Если наименьшее число не является первым, меняем его на первый элемент несортированного массива.
+        </div>
+        <h2 class="subtitle">Сложность:</h2>
+        <div class="hard">
+
+            В отличие от пузырьковой, сортировка выбором неустойчива, но сложность у нее такая же – <b>O(N²)</b>.
+        </div>
+        <div class = "description_video">Если у вас возникли трудности с понимаем работы алгоритма, можно посмотреть его визуализацию на видео:</div>
+        <div class = "video_wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ns4TPTC8whw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <footer class="footer">
+        ©
+    </footer>
+</body>
+</html>

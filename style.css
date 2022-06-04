@@ -1,0 +1,253 @@
+#myChart,
+#myChartSelect,
+#myChartInsert {
+    max-width: 1000px;
+    max-height: 1000px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.btn {
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    width: 140px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 45px;
+    margin: 20px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #524f4e;
+    background: rgb(216, 216, 216);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    transition: .3s;
+}
+
+.btn:hover,
+.btn:active {
+    background: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+    color: white;
+    transform: translateY(-7px);
+}
+
+.wrapper .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.description {
+    padding: 20px;
+    list-style: none;
+    counter-reset: li;
+    margin: 5px;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    min-width: 500px;
+    max-width: 550px;
+}
+
+.description .title {
+
+    position: relative;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.description .title a {
+    color: black;
+}
+
+.description .title a:hover {
+    color: rgb(81, 227, 213);
+    transition: all .3s;
+}
+
+.description .level {
+    position: relative;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 30px;
+}
+
+.description .level::after {
+    content: "";
+    position: absolute;
+    height: 22px;
+    width: 5px;
+    background: rgb(81, 227, 213);
+    top: 9%;
+    left: 18%
+}
+
+.description .title::before {
+    content: "";
+    position: absolute;
+    background: rgb(81, 227, 213);
+    height: 2px;
+    width: 50px;
+    top: 160%;
+    margin: 0 auto;
+    left: 0;
+    right: 0
+}
+
+.description .title::after {
+    content: "";
+    position: absolute;
+    background: rgb(81, 227, 213);
+    height: 2px;
+    width: 180px;
+    top: 135%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+
+.descr__element {
+    position: relative;
+    border-left: 4px solid #337AB7;
+    padding: 16px 20px 16px 28px;
+    margin: 12px 0 12px 10px;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+ul {
+    list-style: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    transition: .5s linear;
+}
+
+i {
+    margin-right: 10px;
+}
+
+nav {
+    display: block;
+    width: 660px;
+    margin: 0 auto 30px;
+}
+
+.nav ul {
+    background: #D4E7EE;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+
+.nav_title {
+    color: rgb(41, 131, 140);
+    margin-left: 20%;
+    font-size: 26px;
+}
+
+.nav a {
+    display: block;
+    padding: 1em;
+    border-right: 1px solid #ADC0CE;
+    background: rgba(173, 192, 206, .3);
+    color: #29838C;
+}
+
+.nav a:hover {
+    background: #ADC0CE
+}
+
+.wrapper_btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.wrapper_btn a {
+    margin-left: 40px;
+}
+
+.wrapper_two {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 5px 40px;
+}
+
+.video_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.description_top {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.description_middle {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.description_bottom {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.gif {
+    display: flex;
+    justify-content: center;
+}
+
+.gif img {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hard {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.description_video {
+    color: #29838C;
+    font-size: 18px;
+}
+
+.description_colors {
+    color: #0751a6;
+    background-color: rgba(55, 143, 246, 0.2);
+    padding: 14px 20px;
+    margin-top: 40px;
+}
+
+.footer {
+    background: #D4E7EE;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #29838C;
+    text-align: center;
+    margin-top: 40px;
+}

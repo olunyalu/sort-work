@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../style.css">
+	<title>Sort Insert</title>
+	<link rel="shortcut icon" type="image/png" href="assets/favicon.ico"/>
+</head>
+<body>
+    <header class="header nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="../templates/bubble.html">Пузырьком</a></li>
+            <li><a href="../templates/select.html">Выбором</a></li>
+            <li><a href="../templates/insert.html">Вставками</a></li>
+            <li><a href="../templates/quick.html">Быстрая</a></li>
+            <li><a href="../templates/merge.html">Слиянием</a></li>
+            <li class="nav_title">Алгоритмы сортировки</li>
+        </ul>
+    </header>
+
+    <div class="wrapper_two">
+        <h1 class ="title">Сортировка вставками</h1>
+        <div class="description_top">
+            Сортировка вставками (Insertion sort) — один из простейших алгоритмов сортировки
+        </div>
+        <div class ="description_middle">
+            <div class="description_colors">
+                Полагается, что начало массива уже отсортировано (изначально 1 элемент). Алгоритм берет первый неотсортированный элемент (индекс 1)
+                и последовательно сравнивает его с отсортированными, находя нужное место. После этого длина отсортированной части увеличивается
+                (теперь уже два отсортированных элемента) и алгоритм переходит к следующему элементу (индекс 2).
+            </div>
+                <br><br>
+            Этот подход хорошо виден на иллюстрации:
+        </div>
+        <div class="gif"><img src="../assets/gifs/insert.gif" alt=""></div>
+
+
+        <div>Пример кода:</div>
+        <pre class="hljs" style="color: rgb(169, 183, 198); background: rgb(40, 43, 46); display: block; overflow-x: auto; padding: 0.5em;"><span class="hljs-keyword" style="color: rgb(204, 120, 50);">const</span> insertionSort = arr =&gt; {
+            <span class="hljs-keyword" style="color: rgb(204, 120, 50);">for</span> (<span class="hljs-keyword" style="color: rgb(204, 120, 50);">let</span> i = <span class="hljs-number" style="color: rgb(104, 151, 187);">1</span>, l = arr.length; i &lt; l; i++) {
+                <span class="hljs-keyword" style="color: rgb(204, 120, 50);">const</span> current = arr[i];
+                <span class="hljs-keyword" style="color: rgb(204, 120, 50);">let</span> j = i;
+                <span class="hljs-keyword" style="color: rgb(204, 120, 50);">while</span> (j &gt; <span class="hljs-number" style="color: rgb(104, 151, 187);">0</span> &amp;&amp; arr[j - <span class="hljs-number" style="color: rgb(104, 151, 187);">1</span>] &gt; current) {
+                    arr[j] = arr[j - <span class="hljs-number" style="color: rgb(104, 151, 187);">1</span>];
+                    j--;
+                }
+                arr[j] = current;
+            }
+    <span class="hljs-keyword" style="color: rgb(204, 120, 50);">return</span> arr;
+};</pre>
+
+
+        <div class = "description_bottom">
+            Начинаем с первого элемента (нулевой считаем отсортированным). На каждой итерации сравниваем активный элемент с отсортированными и находим его место.
+        </div>
+        <h2 class="subtitle">Сложность:</h2>
+        <div class="hard">
+
+            Сложность сортировки вставками такая же, как у предыдущих алгоритмов – <b>O(N²)</b> в худшем случае (если массив отсортирован в обратном порядке). Алгоритм является стабильным.
+        </div>
+
+        <div class = "description_video">Если у вас возникли трудности с понимаем работы алгоритма, можно посмотреть его визуализацию на видео:</div>
+        <div class = "video_wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ROalU379l3U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <footer class="footer">
+        ©
+    </footer>
+</body>
+</html>
